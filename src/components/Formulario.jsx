@@ -32,8 +32,8 @@ export default function Formulario({ pacientes, setPacientes, paciente, setPacie
       setError(true);
     } else {
       setError(false);
-    }
-    const objetoPaciente = { nombre, propietario, email, fecha, sintomas };
+      
+      const objetoPaciente = { nombre, propietario, email, fecha, sintomas };
 
     if (paciente.id) {
       objetoPaciente.id = paciente.id;
@@ -47,6 +47,7 @@ export default function Formulario({ pacientes, setPacientes, paciente, setPacie
       setPacientes([...pacientes, objetoPaciente]);
     }
 
+    }
     //reiniciar el form
     setNombre("");
     setPropietario("");
