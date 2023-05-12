@@ -5,7 +5,7 @@ export const Paciente = ({ paciente, setPaciente, eliminarPaciente}) => {
   const handleEliminarPaciente=()=>{
      Swal.fire({
       title:"Advertencia",
-      text:"deseas eliminar este paciente?",
+      text:"Deseas eliminar este paciente?",
       icon:"question",
       showDenyButton:"No",
       confirmButtonText:"Si"
