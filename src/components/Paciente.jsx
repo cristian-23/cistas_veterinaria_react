@@ -15,7 +15,7 @@ export const Paciente = ({ paciente, setPaciente, eliminarPaciente}) => {
       Swal.fire("Exito", "El paciente se elimino correctamente", "success")
       eliminarPaciente(id)
     }else if (response.isDenied) {
-      Swal.fire("Informacion", "No paso nada", "info")
+      Swal.fire("Informacion", "El pasiente NO fue eliminado", "info")
     }
     })
     
