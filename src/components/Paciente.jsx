@@ -20,7 +20,7 @@ const fechaFormateada = `${dia}-${mes}-${ano}`;
 
     }).then(response=>{
       if (response.isConfirmed) {
-      Swal.fire("Exito", "El paciente se elimino correctamente", "success")
+      Swal.fire("Éxito", "El paciente se elimino correctamente", "success")
       console.log(id);
       eliminarPaciente(id)
     }else if (response.isDenied) {
