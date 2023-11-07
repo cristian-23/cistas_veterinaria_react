@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react";
 import { Error } from "./Error";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
-export default function Formulario({ pacientes, setPacientes, paciente, setPaciente}) {
+export default function Formulario({
+  pacientes,
+  setPacientes,
+  paciente,
+  setPaciente,
+}) {
   const [nombre, setNombre] = useState("");
   const [propietario, setPropietario] = useState("");
   const [email, setEmail] = useState("");
@@ -31,26 +36,27 @@ export default function Formulario({ pacientes, setPacientes, paciente, setPacie
     e.preventDefault();
     if ([nombre, propietario, email, fecha, sintomas].includes("")) {
       setError(true);
+
+      setTimeout(() => {
+        setError(false);
+      }, 4000);
     } else {
-      setError(false);
-      
       const objetoPaciente = { nombre, propietario, email, fecha, sintomas };
 
-    if (paciente.id) {
-      objetoPaciente.id = paciente.id;
-      const pacientesActualizados = pacientes.map( pacienteState => 
-        pacienteState.id === paciente.id ? objetoPaciente : pacienteState
-      )
-      
-      setPacientes(pacientesActualizados)
-      Swal.fire("Éxito", "Paciente actualizado correctamente", "success")
-      setPaciente({})
-    } else {
-      objetoPaciente.id = generarId();
-      setPacientes([...pacientes, objetoPaciente]);
-      Swal.fire("Éxito", "Paciente agregado correctamente", "success")
-    }
+      if (paciente.id) {
+        objetoPaciente.id = paciente.id;
+        const pacientesActualizados = pacientes.map((pacienteState) =>
+          pacienteState.id === paciente.id ? objetoPaciente : pacienteState
+        );
 
+        setPacientes(pacientesActualizados);
+        Swal.fire("Éxito", "Paciente actualizado correctamente", "success");
+        setPaciente({});
+      } else {
+        objetoPaciente.id = generarId();
+        setPacientes([...pacientes, objetoPaciente]);
+        Swal.fire("Éxito", "Paciente agregado correctamente", "success");
+      }
     }
     //reiniciar el form
     setNombre("");
