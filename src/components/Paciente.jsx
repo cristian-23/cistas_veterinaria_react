@@ -2,6 +2,14 @@ import Swal from 'sweetalert2'
 
 export const Paciente = ({ paciente, setPaciente, eliminarPaciente}) => {
   const { nombre, propietario, email, fecha, sintomas, id } = paciente;
+  const fechaObjeto = new Date(fecha);
+
+  const dia = fechaObjeto.getDate();
+const mes = fechaObjeto.getMonth() + 1; // Los meses van de 0 a 11, por lo tanto, sumamos 1
+const ano = fechaObjeto.getFullYear();
+const fechaFormateada = `${dia}-${mes}-${ano}`;
+
+
   const handleEliminarPaciente=()=>{
      Swal.fire({
       title:"Advertencia",
@@ -25,7 +33,7 @@ export const Paciente = ({ paciente, setPaciente, eliminarPaciente}) => {
     <div className="mx-5 my-8 bg-white shadow-md px-5 py-10 rounded-xl">
       <p className="font-bold mb-3 text-gray-700 uppercase">
         {" "}
-        Nombre: <span className="font-normal normal-case">{nombre}</span>
+        Nombre de la mascota: <span className="font-normal normal-case">{nombre}</span>
       </p>
       <p className="font-bold mb-3 text-gray-700 uppercase">
         {" "}
@@ -38,7 +46,7 @@ export const Paciente = ({ paciente, setPaciente, eliminarPaciente}) => {
       </p>
       <p className="font-bold mb-3 text-gray-700 uppercase">
         {" "}
-        Fecha Alta: <span className="font-normal normal-case">{fecha}</span>
+        Fecha de alta: <span className="font-normal normal-case">{fechaFormateada}</span>
       </p>
       <p className="font-bold mb-3 text-gray-700 uppercase">
         {" "}

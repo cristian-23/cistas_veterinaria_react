@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Error } from "./Error";
+import Swal from 'sweetalert2'
 
 export default function Formulario({ pacientes, setPacientes, paciente, setPaciente}) {
   const [nombre, setNombre] = useState("");
@@ -40,11 +41,14 @@ export default function Formulario({ pacientes, setPacientes, paciente, setPacie
       const pacientesActualizados = pacientes.map( pacienteState => 
         pacienteState.id === paciente.id ? objetoPaciente : pacienteState
       )
+      
       setPacientes(pacientesActualizados)
+      Swal.fire("Éxito", "Paciente actualizado correctamente", "success")
       setPaciente({})
     } else {
       objetoPaciente.id = generarId();
       setPacientes([...pacientes, objetoPaciente]);
+      Swal.fire("Éxito", "Paciente agregado correctamente", "success")
     }
 
     }
@@ -74,7 +78,7 @@ export default function Formulario({ pacientes, setPacientes, paciente, setPacie
         )}
         <div className="mb-5">
           <label className="block text-gray-700 uppercase" htmlFor="mascota">
-            Nombre Mascota
+            Nombre de la Mascota
           </label>
           <input
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
